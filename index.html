@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIR UNIVERSITY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+
+body.light-mode {
+            background-color: #ffffff;
+            color: #050A44;
+        }
+
+        body.dark-mode {
+            background-color: #050A44;
+            color: #ffffff;
+        }
+
+        /* Style the circular toggle button */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #050A44;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #2C2E3A;
+        }
+
+        /* Adjustments for dark mode */
+        .dark-mode .footer, .dark-mode .navbar, .dark-mode .btn-custom, .dark-mode .side-button {
+            background-color: #2C2E3A;
+            color: white;
+        }
+
+        .dark-mode .footer a, .dark-mode .navbar .nav-link, .dark-mode .side-button {
+            color: white;
+        }
+        /* Custom styles for the second navbar */
+        .second-navbar .nav-link {
+            font-size: 1.25rem;
+            padding: 10px 15px;
+        }
+        
+        /* Custom style to change placeholder color to white */
+        .form-control::placeholder {
+            color: white;
+            opacity: 1;
+        }
+
+        .btn-custom {
+            height: 55px;
+            border-radius: 0;
+            width: 90%;
+            background-color:  #050A44;
+        }
+
+        .btn-custom:hover {
+        background-color: #2C2E3A; /* Change background color on hover */
+        color: white; /* Ensures text color stays white */
+        transition: background-color 0.3s ease; /* Smooth transition effect */
+    }
+
+        /* Initial transparent background for navbars */
+        .navbar-first,
+        .navbar-second {
+            transition: background-color 0.3s;
+        }
+
+        /* Background color on scroll */
+        .scrolled-first {
+            background-color: #050A44 !important;
+        }
+        
+        .scrolled-second {
+            background-color: white !important;
+        }
+
+        /* Adjust text color for second navbar when scrolled */
+        .scrolled-second .nav-link {
+            color: black !important;
+        }
+        .navbar .nav-link {
+    position: relative;
+    color: white; /* Ensures text color is white */
+}
+
+.navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%; /* Start from the center */
+    bottom: 0; /* Position underline at the bottom */
+    width: 0;
+    height: 2px; /* Adjust thickness of the underline */
+    background-color: currentColor; /* Matches underline color to text color */
+    transition: width 0.3s ease, left 0.3s ease; /* Animation for width and position */
+}
+
+.navbar .nav-link:hover::after {
+    width: 100%; /* Full width on hover */
+    left: 0; /* Expand from center outwards */
+}
+
+.CN{
+    background-color: #eeeef1;
+}
+.CN2{
+    background-color: default;
+}
+
+.card-custom{
+    border-radius: 0%;
+}
+/* General styles for small card images */
+.small-card-img {
+    height: 280px; /* Image occupies 60% of the card height */
+    object-fit: cover;
+    border-radius: 0;
+    
+}
+
+/* Card container hover effect */
+/* Only apply hover effects to small cards */
+.small-card:hover {
+    transform: scale(1.05); /* Slightly enlarges the card */
+    transition: transform 0.3s ease; /* Smooth transition for the bump effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds a shadow effect */
+}
+
+.small-card:hover .small-card-img {
+    transform: scale(1.1); /* Zooms in the image */
+    transition: transform 0.3s ease;
+}
+
+.small-card:hover .card-title, .small-card:hover p {
+    color:#4b54ba; /* Changes text color on hover */
+}
+
+/* Contain the image within small cards */
+.small-card {
+    overflow: hidden; /* Ensures image does not exceed card boundaries */
+    height: 415px; /* Set fixed height for small cards */
+    display: flex;
+    flex-direction: column;
+}
+
+.education-section{
+    margin-left: 1.5%;
+}
+
+.third-navbar .nav-link {
+        color: #4b54ba !important; /* Change text color to #4b54ba */
+        transition: color 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+    /* Optional: Hover effect for third navbar links */
+    .third-navbar .nav-link:hover {
+        text-decoration: none; /* Underline on hover */
+    }
+   
+
+    .blurred-background {
+            position: relative;
+            height: 100vh;
+            background-image: url('wwroot/img/sir.jpeg'); /* Path to background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            filter: blur(8px); /* Adjust the blur effect as needed */
+        }
+
+        .blurred-background2 {
+            position: relative;
+            height: 100vh;
+            background-image: url('wwroot/img/sir4.jpg'); /* Path to background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            filter: blur(8px); /* Adjust the blur effect as needed */
+        }
+
+        /* Content overlay */
+        .overlay-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            max-width: 80%;
+            z-index: 1;
+        }
+
+        /* Profile image circle */
+        .profile-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid white;
+            margin: 0 auto 20px;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Quote text styling */
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .author {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .position {
+            font-style: italic;
+            color: #dddddd;
+        }
+
+        .CN .date-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #050A44; /* Dark background color for the badge */
+            color: white;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+            width: 60px;
+        }
+
+        .date-badge .month {
+            font-size: 0.75rem;
+            line-height: 1;
+        }
+
+        .date-badge .day {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .CN .card {
+            border: 1px solid #ddd; /* Sharp borders */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 0%;
+            overflow: hidden;
+        }
+
+        .CN .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+            transform: scale(1.02); /* Slight enlargement on hover */
+        }
+
+        .CN .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #196dc7; /* Color for the title */
+            transition: transform 0.3s ease;
+        }
+        .CN .card-title:hover{
+            color: #050A44;
+        }
+
+        .CN2 .card {
+            border: 1px solid #ddd; /* Sharp borders */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 0%;
+            overflow: hidden;
+        }
+
+        .CN2 .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+            transform: scale(1.02); /* Slight enlargement on hover */
+        }
+
+        .CN2 .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #196dc7; /* Color for the title */
+            transition: transform 0.3s ease;
+        }
+        .CN2 .card-title:hover{
+            color: #050A44;
+        }
+
+        .CN .event-type {
+            color: #050A44; /* Red color for the event type */
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .CN .event-time {
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* Image zoom effect */
+        .CN .card-img-top {
+            transition: transform 0.3s ;
+            border-radius: 0%;
+        }
+
+        .CN .card:hover .card-img-top {
+            transform: scale(1.05); /* Zoom in image slightly on hover */
+        }
+
+        .CN2 .card-img-top {
+            transition: transform 0.3s ;
+            border-radius: 0%;
+        }
+
+        .CN2 .card:hover .card-img-top {
+            transform: scale(1.05); /* Zoom in image slightly on hover */
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px; /* Space between icons */
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            font-size: 34px; /* Icon size */
+            color: #050A44; /* Default icon color */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s ease; /* Smooth transition on hover */
+        }
+
+        .social-icons a:hover {
+            color: #2C2E3A; /* Hover color */
+        }
+
+        .section-heading {
+            color: #050A44;
+            font-weight: bold;
+        }
+
+        /* Style for side buttons */
+        .side-button {
+            color: #050A44;
+            border-color: #050A44;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Space between list items and make list items appear in column layout */
+        .list-unstyled li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Align side buttons in a column with space between */
+        .side-buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px; /* Space between buttons */
+        }
+
+        
+        /* Footer styling */
+        .footer {
+            background-color: #050A44;
+            color: white;
+            padding: 15px 0;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-brand {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+    </style>
+</head>
+<body  class="light-mode">
+    <!-- Wrapper with background image -->
+    <div class="vh-100" style="background-image: url('https://portals.au.edu.pk/ICO/Content/images/banner.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+        
+        <!-- First Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top navbar-first" style="background-color: rgba(9, 16, 87, 0.8);">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" href="#" style="font-family: 'Times New Roman', Times, serif;">AIR UNIVERSITY</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <span style="font-family: 'Times New Roman', Times, serif;" class="nav-link active text-white fw-bold" aria-current="page">Information for:</span>
+                        </li>
+                        <li class="nav-item me-4">
+                            <a class="nav-link active text-white" aria-current="page" href="#">Students</a>
+                        </li>
+                        <li class="nav-item me-4">
+                            <a class="nav-link active text-white" aria-current="page" href="#">Faculty & Staff</a>
+                        </li>
+                        <li class="nav-item me-4">
+                            <a class="nav-link active text-white" aria-current="page" href="#">Families</a>
+                        </li>
+                        <li class="nav-item me-4">
+                            <a class="nav-link active text-white" aria-current="page" href="#">Visitors</a>
+                        </li>
+                        <li class="nav-item me-4">
+                            <a class="nav-link active text-white" aria-current="page" href="#">Alumni</a>
+                        </li>
+                    </ul>
+                    <!-- Transparent Search Bar -->
+                    <form class="d-flex input-group ms-5" style="width: 200px;">
+                        <input type="search" class="form-control rounded border-0 bg-transparent text-white placeholder-white" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <span class="input-group-text border-0 bg-transparent" id="search-addon">
+                            <i class="fas fa-search text-white"></i>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Second Navbar (hidden on small screens) -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top second-navbar navbar-second d-none d-lg-flex" style="top: 56px;">
+            <div class="container-fluid justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item me-4">
+                        <a class="nav-link text-white" href="#">News</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link text-white" href="#">Events</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link text-white" href="#">Academics</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link text-white" href="#">Research</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link text-white" href="#">Health Care</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link text-white" href="#">Campus Life</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link text-white" href="#">Admission</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link text-white" href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Content with background overlay text -->
+        <div class="container vh-100 d-flex justify-content-center align-items-center">
+            <h1 class="display-1 h-1 text-center" style="color: #DBD3D3; font-family: 'Times New Roman', Times, serif;">Air University</h1>
+        </div>
+        
+    </div>
+
+    <section>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                   <p class="h1 fw-bold">A Societal Mission</p>
+                    <p class="fs-2 mt-3">Air University, established in 2002 and located in Islamabad, Pakistan, is a leading institution dedicated to providing quality education and research opportunities. Affiliated with the Pakistan Air Force, it offers a diverse range of undergraduate, graduate, and doctoral programs across disciplines such as engineering, computer science, business, and social sciences.The university emphasizes a blend of academic excellence, innovation, and integrity, preparing students to become skilled professionals and leaders. With a strong focus on research and development, Air University contributes significantly to technological advancements and societal progress, aiming to shape a brighter future for Pakistan and the global community.</p>
+                    <div class="d-grid gap-2 col-4 mx-auto">
+                        <button class="btn text-white btn-custom fw-bold fs-4 mt-5" type="button">More About Air University</button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="CN mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="h1 fw-bold">Campus News</p>
+                    <p class="fs-4">Stories about the people, research, and innovation across the institution</p>
+                </div>
+                
+                <div class="row g-4">
+                    <!-- First row -->
+                    <div class="col-md-6 d-flex align-items-stretch">
+                        <div class="card text-bg-dark shadow border-0" style="border-radius: 0;">
+                            <img src="wwroot/img/concert.jpg" class="card-img" alt="..." style="height: 100%; object-fit: cover; border-radius: 0;">
+                            <div class="card-img-overlay d-flex flex-column justify-content-end">
+                                <p class="text-uppercase text-white small fw-bold">Concert | Air Nexus 24</p>
+                                <h5 class="card-title text-white">After very long time AU will host a Concert at Air University Islamabad</h5>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-3 d-flex align-items-stretch">
+                        <div class="card shadow border-0 small-card" style="border-radius: 0;">
+                            <img src="wwroot/img/const.jpg" class="card-img-top small-card-img" alt="...">
+                            <div class="card-body">
+                                <p class="text-uppercase small fw-bold" style="color: #0A21C0;">Renovation</p>
+                                <h5 class="card-title">AUSOM lawns, Huts, and train benches are being replaced with new Design</h5>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-3 d-flex align-items-stretch">
+                        <div class="card shadow border-0 small-card" style="border-radius: 0;">
+                            <img src="wwroot/img/culture.jpg" class="card-img-top small-card-img" alt="...">
+                            <div class="card-body">
+                                <p class="text-uppercase small fw-bold" style="color: #0A21C0;">Cultural Dance | Air Nexus 24</p>
+                                <h5 class="card-title">There will be competetion for cultural dance in Air Nexus 24</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row g-4 mt-3">
+                    <!-- Second row -->
+                    <div class="col-md-3 d-flex align-items-stretch">
+                        <div class="card shadow border-0 small-card" style="border-radius: 0;">
+                            <img src="wwroot/img/lol.jpg" class="card-img-top small-card-img" alt="...">
+                            <div class="card-body">
+                                <p class="text-uppercase small fw-bold" style="color: #0A21C0;">Arts</p>
+                                <h5 class="card-title">Air University Respects the arts and organized an art exhibition</h5>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-3 d-flex align-items-stretch">
+                        <div class="card shadow border-0 small-card" style="border-radius: 0;">
+                            <img src="wwroot/img/exam.jpg" class="card-img-top small-card-img" alt="...">
+                            <div class="card-body">
+                                <p class="text-uppercase small fw-bold" style="color: #0A21C0;">Mid Semester Exams</p>
+                                <h5 class="card-title">Mid Semester Exams are being taken from 02 November to 07 November</h5>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-6 d-flex align-items-stretch">
+                        <div class="card text-bg-dark shadow border-0" style="border-radius: 0;">
+                            <img src="wwroot/img/qawali.jpg" class="card-img" alt="..." style="height: 100%; object-fit: cover; border-radius: 0;">
+                            <div class="card-img-overlay d-flex flex-column justify-content-end">
+                                <p class="text-uppercase text-white small fw-bold">Qawali Night | Air Nexus 24</p>
+                                <h5 class="card-title text-white">Qawali Night has been planned for the participants of  <br>Air Nexus 24</h5>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="d-grid gap-2 col-4 mx-auto mb-4">
+                        <button class="btn text-white btn-custom fw-bold fs-4 mt-5" type="button">More About Campus News</button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="education-section mt-5">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-center">
+                    <p class="h1 fw-bold">Acadmeics</p>
+                    <p class="fs-4">Preparing students to make meaningful contributions to society as engaged citizens and leaders in a complex world</p>
+                </div>
+                <div class="col-md-3"></div>
+                </div>
+
+            <div class="row g-4 mt-3">
+                <!-- Card 1 -->
+                <div class="col-md-4 d-flex align-items-stretch">
+                    <div class="card border-0">
+                        <img src="wwroot/img/comp.jpg" class="card-img-top" alt="Undergraduate Education" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Computing and Ai</h5>
+                            <p class="card-text">Rich learning experiences that provide a broad Computing Concept and skill Development.</p>
+                            <a href="#" class="text-primary fw-bold">Computing Education &gt;</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Card 2 -->
+                <div class="col-md-4 d-flex align-items-stretch">
+                    <div class="card border-0">
+                        <img src="wwroot/img/af.jpg" class="card-img-top" alt="Graduate Education" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">AUSOM</h5>
+                            <p class="card-text">Unsurpassed opportunities to participate in the advancement of entire fields of Management and Accounting.</p>
+                            <a href="#" class="text-primary fw-bold">Managment Education &gt;</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Card 3 -->
+                <div class="col-md-4 d-flex align-items-stretch">
+                    <div class="card border-0">
+                        <img src="wwroot/img/EE.jpg" class="card-img-top" alt="Engineering" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Engineering</h5>
+                            <p class="card-text">Continuing education, executive and professional programs, and programs for engineering students.</p>
+                            <a href="#" class="text-primary fw-bold">Engineering Education &gt;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <p class="fs-3 fw-bold text-center">Degrees in which you can pursue your learning skills</p>
+
+                    <nav class="navbar navbar-expand-lg text-center d-none d-lg-flex third-navbar"> <!-- Add class here -->
+                        <div class="container-fluid justify-content-center new">
+                            <ul class="navbar-nav">
+                                <li class="nav-item me-4">
+                                    <a class="nav-link fs-5" href="#">Computer</a>
+                                </li>
+                                <li class="nav-item me-4">
+                                    <a class="nav-link fs-5" href="#">Cyber</a>
+                                </li>
+                                <li class="nav-item me-4">
+                                    <a class="nav-link fs-5" href="#">Accounting</a>
+                                </li>
+                                <li class="nav-item me-4">
+                                    <a class="nav-link fs-5" href="#">Business</a>
+                                </li>
+                                <li class="nav-item me-4">
+                                    <a class="nav-link fs-5" href="#">Electrical</a>
+                                </li>
+                                <li class="nav-item me-4">
+                                    <a class="nav-link fs-5" href="#">Mechatronics</a>
+                                </li>
+                                <li class="nav-item me-4">
+                                    <a class="nav-link fs-5" href="#">Biomedical</a>
+                                </li>
+                                <li class="nav-item me-4">
+                                    <a class="nav-link fs-5" href="#">Fazaia</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    
+
+                </div>
+                <div class="col-md-2"></div>
+                <!-- Last Button Section -->
+<div class="d-grid gap-2 col-md-4 col-12 mx-auto mb-4">
+    <button class="btn text-white btn-custom fw-bold fs-4 mt-5 w-100" type="button">More About Acadmeics</button> 
+</div>
+
+            </div>
+        </div>
+    </section>
+    
+    <section class="position-relative mt-5">
+        <!-- Blurred background image -->
+        <div class="blurred-background"></div>
+    
+        <!-- Overlay content with profile and text -->
+        <div class="overlay-content">
+            <div class="profile-circle">
+                <img src="wwroot/img/sir2.jpg" alt="Profile"> <!-- Path to profile image -->
+            </div>
+            <p class="quote">“When I ‘decided’ to become a Computer Enthusiast, it was not a decision. I could not do otherwise. You don’t decide to fall in love with somebody. It just happens.”</p>
+            <p class="author">Asim Ali Fayyaz</p>
+            <p class="position">Professor (Teaching) of Computer Science</p>
+            <a href="#" class="text-white text-decoration-none fw-bold">More &gt;</a>
+        </div>
+    </section>
+
+    <section>
+        <div class="conatiner mt-5">
+            <div class="row mb-3">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-center">
+                    <p class="h1 fw-bold">Research</p>
+                    <p class="fs-4">
+                        Research is an integral part of our academic activities. Our faculty members are actively engaged in research in various
+                    </p>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="container ">
+                <hr>
+            <div class="row text-center ">
+                
+                <div class="col-md-4 mt-3">
+                    <p class="h2 fw-bold">4 Institutes</p>
+                    <p class="fs-4">for Quality Reasearch</p>
+                </div>
+                <div class="col-md-4 mt-3">
+                    <p class="h3 fw-bold">Tons of Research Material</p>
+                    <p class="fs-5">Holds over Millions of Research Items</p>
+                </div>
+                <div class="col-md-4 mt-3">
+                    <p class="h3 fw-bolder">69 Million RS</p>
+                    <p class="fs-5">Budget for Research Purposes</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row mb-5">
+            <div class="d-grid gap-2 col-md-4 col-12 mx-auto mb-4">
+                <button class="btn text-white btn-custom fw-bold fs-4 mt-5 w-100" type="button">More About Research</button> 
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+    <section class="CN ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <p class="h1 fw-bold text-center">Upcoming Events</p>
+            </div>
+        </div>
+        <div class="row g-4 mt-5">
+            <!-- First Card -->
+            <div class="col-md-3">
+                <div class="card position-relative shadow-sm">
+                    <img src="wwroot/img/fmc.png" class="card-img-top" alt="Event Image" width="400px" height="200px">
+                    <div class="date-badge">
+                        <span class="month">NOV</span><br>
+                        <span class="day">19</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="event-type">NEW FACULTY / INAGURATION</p>
+                        <h5 class="card-title">Fazaia College of Nursing and Allied Health Sciences</h5>
+                        <p class="event-time">09:00 AM PT</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Second Card -->
+            <div class="col-md-3">
+                <div class="card position-relative shadow-sm">
+                    <img src="wwroot/img/calender.png" class="card-img-top" alt="Event Image" height="200px" width="400px">
+                    <div class="date-badge">
+                        <span class="month">NOV</span><br>
+                        <span class="day">10</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="event-type">ROADMAP / 2024-25</p>
+                        <h5 class="card-title">Yearly Calender of the Fall-24 and Spring-25</h5>
+                        <p class="event-time">12:00 PM PT</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Third Card -->
+            <div class="col-md-3">
+                <div class="card position-relative shadow-sm">
+                    <img src="wwroot/img/conf.png" class="card-img-top" alt="Event Image" height="200px" width="400px">
+                    <div class="date-badge">
+                        <span class="month">NOV</span><br>
+                        <span class="day">15</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="event-type">CONFERENCE / SEMINAR </p>
+                        <h5 class="card-title">AUSOM 2nd International Research Conference</h5>
+                        <p class="event-time">12:00 PM PT</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Fourth Card -->
+            <div class="col-md-3">
+                <div class="card position-relative shadow-sm">
+                    <img src="wwroot/img/sdg.png" class="card-img-top" alt="Event Image" height="200px" width="400px">
+                    <div class="date-badge">
+                        <span class="month">NOV</span><br>
+                        <span class="day">06</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="event-type">REPORT</p>
+                        <h5 class="card-title">Annual SDG report of 2023 </h5>
+                        <br>
+                        <p class="event-time">02:00 PM PT</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="d-grid gap-2 col-md-4 col-12 mx-auto mb-4">
+                <button class="btn text-white btn-custom fw-bold fs-4 mt-5 w-100 mb-5" type="button">More Events</button> 
+            </div>
+        </div>
+    </div>
+</section>
+    
+<section class="education-section mt-5">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 text-center">
+                <p class="h1 fw-bold">Fazaia Medical College</p>
+                <p class="fs-4">Producing well trained and skillful doctors for the future of Pakistan</p>
+            </div>
+            <div class="col-md-3"></div>
+            </div>
+
+        <div class="row g-4 mt-3">
+            <!-- Card 1 -->
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card border-0">
+                    <img src="wwroot/img/med3.png" class="card-img-top" alt="Undergraduate Education" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Base Medical Sciences</h5>
+                        <p class="card-text">Rich learning experiences that provide a broad knowledge of Medical Sciences.</p>
+                        <a href="#" class="text-primary fw-bold">Medical Sciences &gt;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card border-0">
+                    <img src="wwroot/img/med2.png" class="card-img-top" alt="Graduate Education" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Clinical Sciences</h5>
+                        <p class="card-text">Unsurpassed opportunities to participate in the advancement of entire fields of Clinical Sciences.</p>
+                        <a href="#" class="text-primary fw-bold">Clinical Sciences &gt;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card border-0">
+                    <img src="wwroot/img/med1.png" class="card-img-top" alt="Engineering" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Medical Education</h5>
+                        <p class="card-text">Continuing education, executive and professional life in Medical Education</p>
+                        <a href="#" class="text-primary fw-bold">Medical Education &gt;</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-grid gap-2 col-md-4 col-12 mx-auto mb-4">
+            <button class="btn text-white btn-custom fw-bold fs-4 mt-5 w-100" type="button">More About FMC</button> 
+        </div>
+
+    </div>
+</section>
+    
+<section class="position-relative mt-5">
+    <!-- Blurred background image -->
+    <div class="blurred-background2"></div>
+
+    <!-- Overlay content with profile and text -->
+    <div class="overlay-content">
+        <div class="profile-circle">
+            <img src="wwroot/img/sir4.jpg" alt="Profile"> <!-- Path to profile image -->
+        </div>
+        <p class="quote">“Computer science is no more about computers than astronomy is about telescopes.”</p>
+        <p class="author">Dr Abdul Hameed</p>
+        <p class="position"> Assistant Professor of Information Technology</p>
+        <a href="#" class="text-white text-decoration-none fw-bold">More &gt;</a>
+    </div>
+</section>
+
+<section class="education-section CN2 mt-5">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 text-center">
+                <p class="h1 fw-bold">Societies and Clubs</p>
+                <p class="fs-4">Building a vibrant community of creative and accomplished people from around the world</p>
+            </div>
+            <div class="col-md-3"></div>
+            </div>
+
+        <div class="row g-4 mt-3">
+            <!-- Card 1 -->
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card border-0">
+                    <img src="wwroot/img/arts.png" class="card-img-top" alt="Undergraduate Education" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">AUCAS</h5>
+                        <p class="card-text">Air University Cultural and Arts Society reflects cultures of Pakistan and Encourages Arts</p>
+                        <a href="#" class="text-primary fw-bold">AUCAS &gt;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card border-0">
+                    <img src="wwroot/img/thes.png" class="card-img-top" alt="Graduate Education" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">AUTS</h5>
+                        <p class="card-text">Air University Thesipian Society leads all the dramatics events of Session</p>
+                        <a href="#" class="text-primary fw-bold">AUTS &gt;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card border-0">
+                    <img src="wwroot/img/aums.png" class="card-img-top" alt="Engineering" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">AUMS</h5>
+                        <p class="card-text">Air University Music Society organizes all the musical events in the session</p>
+                        <a href="#" class="text-primary fw-bold">AUTS &gt;</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-grid gap-2 col-md-4 col-12 mx-auto mb-4">
+            <button class="btn text-white btn-custom fw-bold fs-4 mt-5 w-100" type="button">More About Societies</button> 
+        </div>
+
+    </div>
+</section>
+
+<section class="education-section CN mt-5">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 text-center">
+                <p class="h1 fw-bold">Athletics</p>
+                <p class="fs-4">Providing student-athletes the opportunity to achieve excellence both in competition and in the classroom</p>
+            </div>
+            <div class="col-md-3"></div>
+            </div>
+
+        <div class="row g-4 mt-3">
+            <!-- Card 1 -->
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card border-0">
+                    <img src="wwroot/img/foot.png" class="card-img-top" alt="Undergraduate Education" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">FOOTBALL</h5>
+                        <p class="card-text">Air University offers its students a futsal field to showcase their atheletic skills </p>
+                        <a href="#" class="text-primary fw-bold">Football &gt;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card border-0">
+                    <img src="wwroot/img/badminton.jpg" class="card-img-top" alt="Graduate Education" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">BADMINTON</h5>
+                        <p class="card-text">Air University offers its students multiple badminton arena to showcase their badminton skills</p>
+                        <a href="#" class="text-primary fw-bold">Badminton &gt;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card border-0">
+                    <img src="wwroot/img/basket.jpg" class="card-img-top" alt="Engineering" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">BASKETBALL</h5>
+                        <p class="card-text">Air University offers its students a basketball court to showcase their Basketball skills</p>
+                        <a href="#" class="text-primary fw-bold">Basketball &gt;</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-grid gap-2 col-md-4 col-12 mx-auto mb-4">
+            <button class="btn text-white btn-custom fw-bold fs-4 mt-5 w-100 mb-3" type="button">More About Athletics</button> 
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 text-center">
+                <p class="h1 fw-bold">Admission</p>
+                <p class="fs-4">Offering extraordinary freedom to explore, to collaborate, and to challenge yourself</p>
+        </div>
+
+        <div class="col-md-3"></div>
+        </div>
+
+        <div class="row las">
+            <div class="col-md-12">
+                <img src="wwroot/img/wel.jpg" alt="" width="100%" height="100%" class="shadow-sm">
+            </div>
+            
+        </div>
+       
+    </div>
+    <div class="container mt-4">
+       
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="h4 fw-bold">Explore the possibilities of a Stanford education as you map out your college journey.</p>
+                    <p class="fs-5">We look for distinctive students who exhibit an abundance of energy and curiosity in their classes, activities, projects, research, and lives.</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="h4 fw-bold">Air University meets the full financial need of all the admitted undergrad who qualifies for assistance.</p>
+                    <p class="fs-5 ">More than two-thirds of undergrads receive some form of financial assistance. Generally, tuition is covered for poor familiess.</p>
+                </div>
+
+                <div class="d-grid gap-2 col-md-4 col-12 mx-auto mb-4">
+                    <button class="btn text-white btn-custom fw-bold fs-4 mt-5 w-100 mb-3" type="button">More About Admissions</button> 
+                </div>
+
+            </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="wwroot/img/marg.jpg" class="w-100" alt="" height="500px">
+                
+            </div>
+        </div>
+</section>
+
+<section >
+    <div class="container-fluid CN">
+        <div class="row">
+            <div class="col-12">
+                <div class="social-icons justify-content-end">
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.apple.com" target="_blank"><i class="fab fa-apple"></i></a>
+                    <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Main Menu Section -->
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="section-heading">SCHOOLS</p>
+                        <ul class="list-unstyled">
+                            <li>Business</li>
+                            <li>Education</li>
+                            <li>Engineering</li>
+                            <li>Humanities & Sciences</li>
+                            <li>Law</li>
+                            <li>Medicine</li>
+                            <li>Sustainability</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="section-heading">ACADEMICS</p>
+                        <ul class="list-unstyled">
+                            <li>Undergraduate Majors</li>
+                            <li>Graduate Programs</li>
+                        </ul>
+                        <p class="section-heading mt-3">RESEARCH</p>
+                        <ul class="list-unstyled">
+                            <li>Research Centers A - Z</li>
+                            <li>Libraries</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="section-heading">HEALTH CARE</p>
+                        <ul class="list-unstyled">
+                            <li>Stanford Health Care</li>
+                            <li>Stanford Children's Health</li>
+                        </ul>
+                        <p class="section-heading mt-3">ONLINE LEARNING</p>
+                        <ul class="list-unstyled">
+                            <li>Stanford Online</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <p class="section-heading">ABOUT STANFORD</p>
+                        <ul class="list-unstyled">
+                            <li>Facts</li>
+                            <li>History</li>
+                            <li>Accreditation</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="section-heading">ADMISSION</p>
+                        <ul class="list-unstyled">
+                            <li>Undergraduate</li>
+                            <li>Graduate</li>
+                            <li>Financial Aid</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="section-heading">RESOURCES</p>
+                        <ul class="list-unstyled">
+                            <li>Campus Map</li>
+                            <li>Community Engagement</li>
+                            <li>Directory</li>
+                            <li>Stanford Profiles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Buttons Section -->
+            <div class="col-lg-3">
+                <div class="side-buttons-container">
+                    <a href="#" class="btn btn-outline-dark side-button">Applying</a>
+                    <a href="#" class="btn btn-outline-dark side-button">Visiting</a>
+                    <a href="#" class="btn btn-outline-dark side-button">Giving</a>
+                    <a href="#" class="btn btn-outline-dark side-button">Careers</a>
+                    <a href="#" class="btn btn-outline-dark side-button">Faculty Positions</a>
+                    <a href="#" class="btn btn-outline-dark side-button">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- University Branding -->
+            <div class="col-md-2">
+                <p class="footer-brand mb-0">Air University</p>
+            </div>
+            
+            <!-- Footer Links -->
+            <div class="col-md-8 d-flex flex-wrap justify-content-center">
+                <a href="#">Home</a>
+                <a href="#">Maps & Directions</a>
+                <a href="#">Search Air University</a>
+                <a href="#">Emergency Info</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy</a>
+                <a href="#">Copyright</a>
+                <a href="#">Trademarks</a>
+                <a href="#">Non-Discrimination</a>
+                <a href="#">Accessibility</a>
+            </div>
+            
+            <!-- University Location -->
+            <div class="col-md-2 text-md-end text-center mt-2 mt-md-0">
+                <p class="mb-0">© Air University, Islamabad, Pakistan</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+
+
+    <script src="https://kit.fontawesome.com/dab1f4a7fb.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-q8i/q5+76P2v51LQ96i5YJc1j0O0rT7abK41J6cY/iYc1S3ohZAPx0cD02j6f"></script>
+    <script>
+        // JavaScript to change navbar colors on scroll
+        window.addEventListener("scroll", function () {
+            const firstNavbar = document.querySelector(".navbar-first");
+            const secondNavbar = document.querySelector(".navbar-second");
+            const scrollThreshold = 100;
+
+            if (window.scrollY > scrollThreshold) {
+                firstNavbar.classList.add("scrolled-first");
+                secondNavbar.classList.add("scrolled-second");
+            } else {
+                firstNavbar.classList.remove("scrolled-first");
+                secondNavbar.classList.remove("scrolled-second");
+            }
+        });
+    </script>
+     <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            const toggleButton = document.querySelector('.dark-mode-toggle');
+            
+            // Toggle dark mode class on the body
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+
+            // Update button icon based on the current mode
+            if (body.classList.contains('dark-mode')) {
+                toggleButton.textContent = '☀️';  // Sun icon for light mode
+            } else {
+                toggleButton.textContent = '🌙';  // Moon icon for dark mode
+            }
+        }
+    </script>
+    
+</body>
+</html>
